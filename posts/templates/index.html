@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content%}{% for image in images%}
+<div class="uk-section uk-section-xsmall uk-section-muted">
+    <div class="uk-container">
+        <div class="uk-margin uk-card uk-card uk-card-default uk-width-1-2@m">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-border-circle" width="40" height="40" src="{{user.profile_photo.url}}">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">{{image.user.username}}</h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-card-body uk-flex-first ">
+                    <a href="{% url 'singleImage' image.id%}">
+                        <img src="{{image.image.url}}" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+            <div class="uk-card-footer">
+                <p class="uk-text-meta uk-margin-remove-top">{{image.date_uploaded|timesince}} ago</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %} {% endblock %}

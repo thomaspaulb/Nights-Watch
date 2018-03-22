@@ -1,0 +1,31 @@
+{% extends 'registration/base.html' %} {% block content %}
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+    <div class="uk-card-media-left uk-cover-container">
+        <img src="https://fthmb.tqn.com/i1BQsuAFJw0K8a0bHikJhZZ4asY=/960x0/filters:no_upscale()/walkinginneighborhood-56a67e613df78cf7728eabde.jpg" alt="" uk-cover>
+        <canvas width="900" height="500"></canvas>
+    </div>
+    <div>
+        <div class="uk-card-body">
+            {% if form.errors %}
+            <p> Password or Username is incorrect </p>
+            {% endif %}
+            <h3 class="uk-card-title">login</h3>
+            <form action="/accounts/login/" method="post">
+                {% csrf_token %}
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large" type="text" placeholder="username">
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large" type="password" placeholder="password">
+                </div>
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary" type="submit" value="login">Login</button>
+                </div>
+                <input type="hidden" name="next" value="{{next}}">
+
+                <p>Dont have an account <a href="{% url 'registration_register' %}">Register!</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
